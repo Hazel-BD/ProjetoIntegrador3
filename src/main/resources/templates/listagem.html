@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Colchões</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f8ff;
+            height: 100vh;
+            background: linear-gradient(45deg, #b0e0e6, #4682b4); /* Gradiente suave */
+        }
+        header {
+            background-color: #4682b4; /* Azul suave */
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+        .navbar nav ul li a:hover {
+            color: #87ceeb; /* Azul mais claro no hover */
+        }
+        .table-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index" class="logo">Loja de Colchões</a>
+            <nav>
+                <ul>
+                    <li><a href="index">Início</a></li>
+                    <li><a href="cadastro">Cadastrar</a></li>
+                    <li><a href="login">Login</a></li>
+                    <li><a href="listagem">Listagem</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="table-container">
+        <h2>Colchões Disponíveis</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Colchão Confort Plus</td>
+                    <td>R$ 1.199,00</td>
+                    <td>Colchão ortopédico de alta qualidade.</td>
+                </tr>
+                <tr>
+                    <td>Colchão Soft Dream</td>
+                    <td>R$ 999,00</td>
+                    <td>Colchão macio e confortável.</td>
+                </tr>
+                <!-- Adicione mais produtos conforme necessário -->
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

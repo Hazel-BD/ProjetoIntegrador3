@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Colchões</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f8ff;
+            height: 100vh;
+            background: linear-gradient(45deg, #b0e0e6, #4682b4); /* Gradiente suave */
+        }
+        header {
+            background-color: #4682b4; /* Azul suave */
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+        .navbar nav ul li a:hover {
+            color: #87ceeb; /* Azul mais claro no hover */
+        }
+        .hero {
+            background-color: rgba(176, 224, 230, 0.7); /* Azul claro com transparência */
+            padding: 100px 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 700px;
+        }
+        .hero h1 {
+            font-size: 50px;
+            color: #4682b4;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #333;
+        }
+        .hero .btn {
+            background-color: #4682b4;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .hero .btn:hover {
+            background-color: #5a9bd5; /* Azul mais claro no hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index" class="logo">Loja de Colchões</a>
+            <nav>
+                <ul>
+                    <li><a href="index">Início</a></li>
+                    <li><a href="cadastro">Cadastrar</a></li>
+                    <li><a href="login">Login</a></li>
+                    <li><a href="listagem">Listagem</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Encontre o Conforto que Você Merece</h1>
+        <p>Colchões de alta qualidade para o seu bem-estar!</p>
+        <a href="cadastro" class="btn">Cadastre-se Agora</a>
+    </section>
+</body>
+</html>
