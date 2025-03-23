@@ -1,53 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Loja de Colchões</title>
+    <title>Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1f8ff;
+            background: linear-gradient(45deg, #b0e0e6, #4682b4);
             height: 100vh;
-            background: linear-gradient(45deg, #b0e0e6, #4682b4); /* Gradiente suave */
         }
         header {
-            background-color: #4682b4; /* Azul suave */
+            background-color: #4682b4;
             padding: 20px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-        }
-        .navbar .logo {
+            text-align: center;
+            color: white;
             font-size: 24px;
             font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-        }
-        .navbar nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        .navbar nav ul li {
-            display: inline;
-        }
-        .navbar nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-        }
-        .navbar nav ul li a:hover {
-            color: #87ceeb; /* Azul mais claro no hover */
         }
         .form-container {
-            max-width: 500px;
+            max-width: 400px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -63,9 +38,9 @@
             flex-direction: column;
         }
         .form-container label {
-            margin-bottom: 5px;
             font-size: 14px;
             color: #333;
+            margin-bottom: 5px;
         }
         .form-container input {
             padding: 10px;
@@ -77,40 +52,33 @@
         .form-container button {
             background-color: #4682b4;
             color: white;
-            padding: 12px 20px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
+            cursor: pointer;
         }
         .form-container button:hover {
-            background-color: #5a9bd5; /* Azul mais claro no hover */
+            background-color: #5a9bd5;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <a href="index" class="logo">Loja de Colchões</a>
-            <nav>
-                <ul>
-                    <li><a href="index">Início</a></li>
-                    <li><a href="cadastro">Cadastrar</a></li>
-                    <li><a href="login">Login</a></li>
-                    <li><a href="listagem">Listagem</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="form-container">
-        <h2>Login</h2>
-        <form onsubmit="return validarLogin()">
-            <label for="email">Email</label>
+      <header>Login</header>
+    <div class="form-container">
+        <h2>Acesse sua conta</h2>
+        <form action="/login" method="post">
+            <label for="email">E-mail</label>
             <input type="email" id="email" name="email" required>
+            
             <label for="senha">Senha</label>
             <input type="password" id="senha" name="senha" required>
+            
             <button type="submit">Entrar</button>
         </form>
-    </section>
+        
+        <!-- Mensagem de erro caso login falhe -->
+        <p th:if="${erro}" style="color: red;">[[${erro}]]</p>
+    </div>
 </body>
 </html>

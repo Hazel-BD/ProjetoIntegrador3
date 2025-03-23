@@ -1,110 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de Colchões</title>
+    <title>Listagem de Produtos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f1f8ff;
-            height: 100vh;
-            background: linear-gradient(45deg, #b0e0e6, #4682b4); /* Gradiente suave */
+            text-align: center;
         }
-        header {
-            background-color: #4682b4; /* Azul suave */
-            padding: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        
+        h2 {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            margin: 0;
         }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-        }
-        .navbar .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-        }
-        .navbar nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        .navbar nav ul li {
-            display: inline;
-        }
-        .navbar nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-        }
-        .navbar nav ul li a:hover {
-            color: #87ceeb; /* Azul mais claro no hover */
-        }
-        .table-container {
-            max-width: 800px;
-            margin: 50px auto;
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            border-radius: 8px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 10px;
         }
-        table th, table td {
+
+        th, td {
+            border: 1px solid #ddd;
             padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background: #28a745;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background: #218838;
+        }
+
+        .delete {
+            background: #dc3545;
+        }
+
+        .delete:hover {
+            background: #c82333;
+        }
+
+        .add-product {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .add-product:hover {
+            background: #218838;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <a href="index" class="logo">Loja de Colchões</a>
-            <nav>
-                <ul>
-                    <li><a href="index">Início</a></li>
-                    <li><a href="cadastro">Cadastrar</a></li>
-                    <li><a href="login">Login</a></li>
-                    <li><a href="listagem">Listagem</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <h2>Listagem de Produtos</h2>
+    <div class="container">
+        <!-- FORMULÁRIO PARA ADICIONAR PRODUTO -->
+        <h3>Adicionar Produto</h3>
+        <form action="/produtos/adicionar" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-    <section class="table-container">
-        <h2>Colchões Disponíveis</h2>
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+
+            <button type="submit" class="add-product">➕ Adicionar Produto</button>
+        </form>
+
+        <!-- TABELA DE PRODUTOS -->
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th>Preço</th>
-                    <th>Descrição</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Colchão Confort Plus</td>
-                    <td>R$ 1.199,00</td>
-                    <td>Colchão ortopédico de alta qualidade.</td>
+                <tr th:each="produto : ${produtos}">
+                    <td th:text="${produto.id}"></td>
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${#numbers.formatDecimal(produto.preco, 1, 2)}"></td>
+                    <td>
+                        <a th:href="@{/produtos/editar/{id}(id=${produto.id})}">✏️ Editar</a> |
+                        <a th:href="@{/produtos/deletar/{id}(id=${produto.id})}" class="delete" onclick="return confirm('Deseja excluir este produto?')">🗑️ Excluir</a>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Colchão Soft Dream</td>
-                    <td>R$ 999,00</td>
-                    <td>Colchão macio e confortável.</td>
-                </tr>
-                <!-- Adicione mais produtos conforme necessário -->
             </tbody>
         </table>
-    </section>
+    </div>
 </body>
 </html>
